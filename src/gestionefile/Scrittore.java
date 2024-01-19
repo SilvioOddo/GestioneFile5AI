@@ -16,8 +16,10 @@ public class Scrittore implements Runnable{
 
     String nomeFile;
     
-    public Scrittore(String nomeFile){
+    public Scrittore(String nomeFile, String username, String password){
         this.nomeFile = nomeFile;
+        this.username = username;
+        this.password = password;
     }
     
     @Override
