@@ -39,9 +39,7 @@ public class Scrittore implements Runnable{
             br = new BufferedWriter(
                     new FileWriter(nomeFile));
             //2) scrivo nel buffer
-            br.write(username); //non so come fare, mi da un errore
-            br.write(";");
-            br.write(password); //non so come fare, mi da un errore
+            br.write(username + ";" + password); 
             br.write("\n\r");
             //3) svuoto il buffer e salvo nel file i dati
             br.flush();         
