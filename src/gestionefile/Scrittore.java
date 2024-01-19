@@ -15,6 +15,8 @@ import java.util.logging.Logger;
 public class Scrittore implements Runnable{
 
     String nomeFile;
+    String username;
+    String password;
     
     public Scrittore(String nomeFile, String username, String password){
         this.nomeFile = nomeFile;
