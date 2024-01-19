@@ -21,7 +21,7 @@ public class GestioneFile {
         
         //2)ELABORAZIONE
         Scanner scanner = new Scanner(System.in);
-       
+        
         System.out.print("Inserisci username: "); //richiede l'username in input
         String username = scanner.nextLine();//assegna l'username letto in input alla variabile "username"
         
@@ -31,7 +31,7 @@ public class GestioneFile {
         scanner.close(); // chiudi lo scanner
 
         //3) SCRITTURA
-        Scrittore scrittore = new Scrittore("output.csv");
+        Scrittore scrittore = new Scrittore("output.csv", username, password);
         Thread threadScrittore = new Thread(scrittore);
         threadScrittore.start();
     }
