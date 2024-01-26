@@ -20,8 +20,8 @@ public class Scrittore implements Runnable{
     String password;
     
     public Scrittore(String nomeFile1, String nomeFile2, String username, String password){
-        this.nomeFile = nomeFile1;
-        this.nomeFile = nomeFile2;
+        this.nomeFile1 = nomeFile1;
+        this.nomeFile2 = nomeFile2;
         this.username = username;
         this.password = password;
     }
