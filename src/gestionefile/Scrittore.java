@@ -14,12 +14,12 @@ import java.util.logging.Logger;
 
 public class Scrittore implements Runnable{
 
-    String nomeFile;
+    String nomeFile1;
     String username;
     String password;
     
-    public Scrittore(String nomeFile, String username, String password){
-        this.nomeFile = nomeFile;
+    public Scrittore(String nomeFile1, String username, String password){
+        this.nomeFile = nomeFile1;
         this.username = username;
         this.password = password;
     }
@@ -37,7 +37,7 @@ public class Scrittore implements Runnable{
         try {
             //1) apro il file
             br = new BufferedWriter(
-                    new FileWriter(nomeFile));
+                    new FileWriter(nomeFile1));
             //2) scrivo nel buffer
             br.write(username + ";" + password); 
             br.write("\n\r");
