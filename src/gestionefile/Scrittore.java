@@ -15,11 +15,13 @@ import java.util.logging.Logger;
 public class Scrittore implements Runnable{
 
     String nomeFile1;
+    String nomeFile2;
     String username;
     String password;
     
-    public Scrittore(String nomeFile1, String username, String password){
+    public Scrittore(String nomeFile1, String nomeFile2, String username, String password){
         this.nomeFile = nomeFile1;
+        this.nomeFile = nomeFile2;
         this.username = username;
         this.password = password;
     }
@@ -27,6 +29,7 @@ public class Scrittore implements Runnable{
     @Override
     public void run() {
         scrivi();
+        copia();
     }
     /**
      * Scrive un file di testo usando la classe BufferedWriter
@@ -53,8 +56,33 @@ public class Scrittore implements Runnable{
                     br.close();
             } catch (IOException ex) {
                 Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                
+            }   
         }
     }
+    
+    public void copia(){
+        BufferedWriter br=null;
+        
+        try {
+            //1) apro il file
+            br = new BufferedWriter(
+                    new FileWriter(nomeFile2));
+            //2) scrivo nel buffer
+            br.write(username + ";" + password); 
+            br.write("\n\r");
+            //3) svuoto il buffer e salvo nel file i dati
+            br.flush();         
+        } catch (IOException ex) {
+            Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if (br!=null)
+                try {
+                    //4)chiudo lo stream in uscita
+                    br.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+    }    
 }
