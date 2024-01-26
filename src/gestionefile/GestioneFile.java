@@ -31,7 +31,7 @@ public class GestioneFile {
         scanner.close(); // chiudi lo scanner
 
         //3) SCRITTURA
-        Scrittore scrittore = new Scrittore("output.csv", username, password);
+        Scrittore scrittore = new Scrittore("output.csv", "copia.csv", username, password);
         Thread threadScrittore = new Thread(scrittore);
         threadScrittore.start();
     }
