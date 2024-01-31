@@ -53,8 +53,8 @@ public class GestioneFile {
                 writer.write(line); 
                 writer.newLine(); //aggiunge una nuova linea nel file di destinazione dopo ogni riga
             }
-            reader.close(); // chiudiamo il file da cui leggieremo le righe
-            writer.close(); // chiudiamo il file in cui copieremo le righe
+            reader.close(); //chiudiamo il file da cui leggieremo le righe
+            writer.close(); //chiudiamo il file in cui copieremo le righe
         } 
         catch (IOException e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public class GestioneFile {
         Thread threadScrittore = new Thread(scrittore);
         threadScrittore.start();
         
-       //5) SCRIVERE E LEGGERE IL FILE USER.CSV CON LE STESSE INFORMAZIONI DEL FILE USER.JSON
+       //5) ISSUE #3 - SCRIVERE E LEGGERE IL FILE USER.CSV CON LE STESSE INFORMAZIONI DEL FILE USER.JSON
         try {
         BufferedReader reader = new BufferedReader(new FileReader(nomeFile3));
 
@@ -78,8 +78,8 @@ public class GestioneFile {
                 writer.write(line); 
                 writer.newLine(); //aggiunge una nuova linea nel file di destinazione dopo ogni riga
             }
-            reader.close(); // chiudiamo il file da cui leggieremo le righe
-            writer.close(); // chiudiamo il file in cui copieremo le righe
+            reader.close(); //chiudiamo il file da cui leggieremo le righe
+            writer.close(); //chiudiamo il file in cui copieremo le righe
         } 
         catch (IOException e) {
             e.printStackTrace();
