@@ -41,21 +41,12 @@ public class GestioneFile {
         scanner.close(); // chiudo lo scanner
                 
         //3) COPIA IL CONTENUTO DEL FILE OUTPUT.CSV IN COPIA.CSV
-        try {
-        BufferedReader reader = new BufferedReader(new FileReader(nomeFile1));
-
-            //apre il file di destinazione in scrittura usando BufferedWriter
-            BufferedWriter writer = new BufferedWriter(new FileWriter(nomeFile2)); 
-
-            //legge il file riga per riga per poi copiare il contenuto nel file di destinazione
-            String line;
+        try (BufferedReader reader = new BufferedReader(new FileReader(nomeFile1)));
+            (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeFile2))) {
+            String line; //legge il file riga per riga per poi copiare il contenuto nel file di destinazione
             while ((line = reader.readLine()) != null) {
                 writer.write(line); 
                 writer.newLine(); //aggiunge una nuova linea nel file di destinazione dopo ogni riga
-            }
-            reader.close(); //chiudiamo il file da cui leggieremo le righe
-            writer.close(); //chiudiamo il file in cui copieremo le righe
-        } 
         catch (IOException e) {
             e.printStackTrace();
         }            
@@ -65,22 +56,14 @@ public class GestioneFile {
         Thread threadScrittore = new Thread(scrittore);
         threadScrittore.start();
         
-       //5) ISSUE #3 - SCRIVERE E LEGGERE IL FILE USER.CSV CON LE STESSE INFORMAZIONI DEL FILE USER.JSON
-        try {
-        BufferedReader reader = new BufferedReader(new FileReader(nomeFile3));
-
-            //apre il file di destinazione in scrittura usando BufferedWriter
-            BufferedWriter writer = new BufferedWriter(new FileWriter(nomeFile4)); 
-
-            //legge il file riga per riga per poi copiare il contenuto nel file di destinazione
-            String line;
+       //5) SCRIVERE E LEGGERE IL FILE USER.CSV CON LE STESSE INFORMAZIONI DEL FILE USER.JSON
+        try (BufferedReader reader = new BufferedReader(new FileReader(nomeFile3)));
+            (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeFile4))) {
+            String line; //legge il file riga per riga per poi copiare il contenuto nel file di destinazione
             while ((line = reader.readLine()) != null) {
                 writer.write(line); 
                 writer.newLine(); //aggiunge una nuova linea nel file di destinazione dopo ogni riga
             }
-            reader.close(); //chiudiamo il file da cui leggieremo le righe
-            writer.close(); //chiudiamo il file in cui copieremo le righe
-        } 
         catch (IOException e) {
             e.printStackTrace();
         }
