@@ -41,15 +41,16 @@ public class GestioneFile {
         scanner.close(); // chiudo lo scanner
                 
         //3) COPIA IL CONTENUTO DEL FILE OUTPUT.CSV IN COPIA.CSV
-        try (BufferedReader reader = new BufferedReader(new FileReader(nomeFile1)));
-            (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeFile2))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(nomeFile1));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(nomeFile2))) {
             String line; //legge il file riga per riga per poi copiare il contenuto nel file di destinazione
-            while ((line = reader.readLine()) != null) {
+        while ((line = reader.readLine()) != null) {
                 writer.write(line); 
                 writer.newLine(); //aggiunge una nuova linea nel file di destinazione dopo ogni riga
-        catch (IOException e) {
+            }
+        }catch (IOException e) {
             e.printStackTrace();
-        }            
+        }
     
         //4) SCRITTURA
         Scrittore scrittore = new Scrittore("output.csv", username, password);
@@ -57,14 +58,14 @@ public class GestioneFile {
         threadScrittore.start();
         
        //5) SCRIVERE E LEGGERE IL FILE USER.CSV CON LE STESSE INFORMAZIONI DEL FILE USER.JSON
-        try (BufferedReader reader = new BufferedReader(new FileReader(nomeFile3)));
-            (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeFile4))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(nomeFile3));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(nomeFile4))) {
             String line; //legge il file riga per riga per poi copiare il contenuto nel file di destinazione
             while ((line = reader.readLine()) != null) {
                 writer.write(line); 
                 writer.newLine(); //aggiunge una nuova linea nel file di destinazione dopo ogni riga
             }
-        catch (IOException e) {
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }
