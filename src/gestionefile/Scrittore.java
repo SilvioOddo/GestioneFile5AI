@@ -31,9 +31,8 @@ public class Scrittore implements Runnable{
      * Scrive un file di testo usando la classe BufferedWriter
      */
     public void scrivi(){
-        BufferedWriter br=null;
         
-        try (br = new BufferedWriter(new FileWriter(nomeFile1))) {
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(nomeFile1))) {
             // scrivo nel buffer
             br.write(username + ";" + password); 
             br.write("\n\r");
