@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.*;
 
 /**
  *
@@ -58,15 +59,12 @@ public class GestioneFile {
         threadScrittore.start();
         
        //5) SCRIVERE E LEGGERE IL FILE USER.CSV CON LE STESSE INFORMAZIONI DEL FILE USER.JSON
-        try (BufferedReader reader = new BufferedReader(new FileReader(nomeFile3));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(nomeFile4))) {
-            String line; //legge il file riga per riga per poi copiare il contenuto nel file di destinazione
-            while ((line = reader.readLine()) != null) {
-                writer.write(line); 
-                writer.newLine(); //aggiunge una nuova linea nel file di destinazione dopo ogni riga
-            }
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
+       try {
+           DataOutputStream scriviCSV = new DataOutputStream(new FileOutputStream(nomeFile4));
+           scriviCSV.writeBytes("id;name;surname;role\n");
+           scriviCSV.writeBytes("1;name;surname;role");
+       }catch(IOException e){
+           e.printStackTrace();
+       }
     }
 }
