@@ -33,26 +33,14 @@ public class Scrittore implements Runnable{
     public void scrivi(){
         BufferedWriter br=null;
         
-        try {
-            //1) apro il file
-            br = new BufferedWriter(
-                    new FileWriter(nomeFile1));
-            //2) scrivo nel buffer
+        try (br = new BufferedWriter(new FileWriter(nomeFile1))) {
+            // scrivo nel buffer
             br.write(username + ";" + password); 
             br.write("\n\r");
-            //3) svuoto il buffer e salvo nel file i dati
+            // svuoto il buffer e salvo nel file i dati
             br.flush();         
         } catch (IOException ex) {
             Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally{
-            if (br!=null)
-                try {
-                    //4)chiudo lo stream in uscita
-                    br.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
-            }   
         }
     }
 }
