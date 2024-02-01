@@ -21,9 +21,8 @@ public class Lettore extends Thread{
      * e lo mostra in output
      */
     public void leggi(){
-        FileReader fr;
         int i; 
-        try (fr = new FileReader(nomeFile)){  
+        try (FileReader fr = new FileReader(nomeFile)){  
             // leggo carattere per carattere e lo stampo 
             while ((i=fr.read()) != -1)
                 System.out.print((char) i);
